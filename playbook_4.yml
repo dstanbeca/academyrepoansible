@@ -1,0 +1,48 @@
+---
+# The following is one way to do this is you want to check multiple accounts
+- name: Get all users
+  getent:
+    database: passwd
+    split: ":"
+
+- debug:
+    var: getent_passwd
+
+- name: Print the usernames
+  debug:
+    msg: "{{ getent_passwd | dict2items | map(attribute='key') | list }}"
+
+- name: Check if a root user exists
+  debug:
+    msg: The root user exists
+  when: ( "root" in getent_passwd.keys() )
+
+# If you only want to ensure that one user and group exists the following can be used
+- name: Check that the Foo user is present
+  getent:
+    database: passwd
+    key: foo
+    fail_key: true
+
+- name: Check that the Foo group is present
+  getent:
+    database: group
+    key: foo
+    fail_key: true
+
+# Get the HOME for root
+- name: Getent passwd
+  getent:
+    database: passwd
+    key: root
+    split: ":"
+
+- name: Set a fact for the users HOME
+  set_fact:
+    root_home: "{{ user.value[4] }}"
+  when: user.key == "root"
+  loop: "{{ getent_passwd | dict2items }}"
+  loop_control:
+    extended: true
+    loop_var: user
+    label: "{{ user.key }}"
