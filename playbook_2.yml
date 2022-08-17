@@ -16,4 +16,4 @@
 
   - name : Set/Change system hostname
     hostname: 
-      name: {{ inventory_hostname }}
+      name: "{{ inventory_hostname }}"
