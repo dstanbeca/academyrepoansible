@@ -8,6 +8,6 @@
 
   - name : Start Docker service
     service:
-      name: docker
+      name: docker.service
       state: started
       enabled: yes
