@@ -8,11 +8,12 @@
   - name : Disable SELinux
     selinux: state=disabled
 
-  - name: Stop and disable firewalld.
+  - name : Stop and disable firewalld.
     service:
       name: firewalld
       state: stopped
       enabled: False
 
-  - name: Set/Change system hostname
-    command: hostnamectl set-hostname {{ inventory_hostname }}
+  - name : Set/Change system hostname
+    hostname: 
+      name: {{ inventory_hostname }}
