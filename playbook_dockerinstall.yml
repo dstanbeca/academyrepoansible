@@ -1,10 +1,13 @@
-- name : Install Docker
-  package:
-    name: docker-ce
-    state: latest
+- hosts: all
 
-- name : Start Docker service
-  service:
-    name: docker
-    state: started
-    enabled: yes
+  tasks:
+  - name : Install Docker
+    package:
+      name: docker-ce
+      state: latest
+
+  - name : Start Docker service
+    service:
+      name: docker
+      state: started
+      enabled: yes
