@@ -1,0 +1,9 @@
+[all]
+academy1.local
+academy2.local
+
+[ansible1]
+academy1.local
+
+[ansible2]
+academy2.local
