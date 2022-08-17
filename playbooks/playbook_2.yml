@@ -6,8 +6,8 @@
     shell: cat /etc/hostname
     register: hosts_contents
 
-  - name: Check if hosts file contains the word "localhost"
+  - name: Check if hosts file contains the word "academy"
     debug:
-      msg: "/etc/hostname file contains the word localhost"
-      when: hosts_contents.stdout.find("localhost") != -1
+      msg: "/etc/hostname file contains the word academy"
+      when: hosts_contents.stdout.find("academy") != -1
       var: find_hosts_output
