@@ -1,20 +1,17 @@
-
-#- hosts: all
-#  become: true
-#  tasks:
-  - name : Update all packages
+---
+  - name : [Common Tasks Playbook] Update all packages
     yum: name=* state=latest update_cache=true
     become: yes
 
-  - name : Disable SELinux
+  - name : [Common Tasks Playbook] Disable SELinux
     selinux: state=disabled
 
-  - name : Stop and disable firewalld.
+  - name : [Common Tasks Playbook] Stop and disable firewalld.
     service:
       name: firewalld
       state: stopped
       enabled: False
 
-  - name : Set/Change system hostname
+  - name : [Common Tasks Playbook] Set/Change system hostname
     hostname: 
       name: "{{ inventory_hostname }}"
