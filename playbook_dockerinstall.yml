@@ -1,14 +1,14 @@
 ---
-    - name: [Docker Install Playbook] Set Distribution Variable
+    - name: Docker Install Playbook - Set Distribution Variable
       ansible.builtin.set_fact:
         mydistribution: "{{ 'rhel' if (ansible_distribution == 'Red Hat Enterprise Linux') else (ansible_distribution | lower) }}"
 
-    - name: [Docker Install Playbook] Add signing key
+    - name: Docker Install Playbook - Add signing key
       ansible.builtin.rpm_key:
         key: "https://download.docker.com/linux/{{ mydistribution }}/gpg"
         state: present
 
-    - name: [Docker Install Playbook] Add repository into repo.d list
+    - name: Docker Install Playbook - Add repository into repo.d list
       ansible.builtin.yum_repository:
         name: docker
         description: docker repository
@@ -17,7 +17,7 @@
         gpgcheck: true
         gpgkey: "https://download.docker.com/linux/{{ mydistribution }}/gpg"
 
-    - name: [Docker Install Playbook] Install Docker
+    - name: Docker Install Playbook - Install Docker
       ansible.builtin.yum:
         name:
           - docker-ce
@@ -26,7 +26,7 @@
         state: latest
         update_cache: true
 
-    - name: [Docker Install Playbook] Start Docker
+    - name: Docker Install Playbook - Start Docker
       ansible.builtin.service:
         name: "docker"
         enabled: true
