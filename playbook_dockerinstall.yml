@@ -1,5 +1,4 @@
 ---
-- name: Docker Install Playbook
     - name: Docker Install Playbook - Set Distribution Variable
       ansible.builtin.set_fact:
         mydistribution: "{{ 'rhel' if (ansible_distribution == 'Red Hat Enterprise Linux') else (ansible_distribution | lower) }}"
