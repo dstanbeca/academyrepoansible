@@ -1,5 +1,5 @@
 ---
-      - name: [User Creation Playbook] Create a login user
+      - name: User Creation Playbook - Create a login user
         user:
           name: "{{ user }}"
           group: wheel
@@ -11,13 +11,13 @@
           ssh_key_type: rsa
           ssh_key_file: "~/.ssh/id_rsa.pub"
 
-      - name: [User Creation Playbook] Add public key to authorized_keys
+      - name: User Creation Playbook - Add public key to authorized_keys
         authorized_key:
           user: "{{ user }}"
           state: present
           key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
-      - name: [User Creation Playbook] Add {{ user }} to sudoers file
+      - name: User Creation Playbook - Add {{ user }} to sudoers file
         ansible.builtin.lineinfile:
           path: /etc/sudoers
           state: present
