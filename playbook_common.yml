@@ -1,17 +1,17 @@
 ---
-  - name : "[Common Tasks Playbook] Update all packages"
+  - name : Common Tasks Playbook - Update all packages
     yum: name=* state=latest update_cache=true
     become: yes
 
-  - name : "[Common Tasks Playbook] Disable SELinux"
+  - name : Common Tasks Playbook - Disable SELinux
     selinux: state=disabled
 
-  - name : [Common Tasks Playbook] Stop and disable firewalld.
+  - name : Common Tasks Playbook - Stop and disable firewalld.
     service:
       name: firewalld
       state: stopped
       enabled: False
 
-  - name : "[Common Tasks Playbook] Set/Change system hostname"
+  - name : Common Tasks Playbook - Set/Change system hostname
     hostname: 
       name: "{{ inventory_hostname }}"
