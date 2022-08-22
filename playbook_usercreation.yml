@@ -1,1 +1,32 @@
-d
+---
+- name: Create user on a linux server
+  hosts: all
+  become: yes
+  vars:
+    - user: ansible
+  tasks:
+      - name: Create a login user
+        user:
+          name: "{{ user }}"
+          group: wheel
+          append: yes
+          createhome: yes        # Defaults to yes
+          home: /home/ansible    # Defaults to /home/<username>
+          state: present
+          generate_ssh_key: yes
+          ssh_key_type: rsa
+          ssh_key_file: "~/.ssh/id_rsa.pub"
+
+      - name: Add public key to authorized_keys
+        authorized_key:
+          user: "{{ user }}"
+          state: present
+          key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+      - name: Add {{ user }} to sudoers file
+        ansible.builtin.lineinfile:
+          path: /etc/sudoers
+          state: present
+          regexp: '^{{ user }}'
+          line: '{{ user }} ALL=(ALL) NOPASSWD: ALL'
+          validate: 'visudo -cf %s'
