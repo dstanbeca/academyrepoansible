@@ -1,7 +1,7 @@
 
 #- hosts: all
 #  become: true
-  tasks:
+#  tasks:
   - name : Update all packages
     yum: name=* state=latest update_cache=true
     become: yes
