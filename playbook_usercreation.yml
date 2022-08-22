@@ -1,10 +1,10 @@
 ---
-- name: Create user
-  hosts: all
-  become: yes
-  vars:
-    - user: ansible
-  tasks:
+#- name: Create user
+#  hosts: all
+#  become: yes
+#  vars:
+#    - user: ansible
+#  tasks:
       - name: Create a login user
         user:
           name: "{{ user }}"
