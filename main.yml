@@ -1,0 +1,8 @@
+---
+   - hosts: instance_1
+     gather_facts: yes
+
+      tasks:
+        - include: playbook_common.yml
+        - include: playbook_usercreation.yml
+        - include: playbook_dockerinstall.yml
