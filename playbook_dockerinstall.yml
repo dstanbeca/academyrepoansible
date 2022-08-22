@@ -1,7 +1,7 @@
 
-- hosts: all
-  become: true
-  tasks:
+#- hosts: all
+#  become: true
+#  tasks:
     - name: centos
       ansible.builtin.set_fact:
         mydistribution: "{{ 'rhel' if (ansible_distribution == 'Red Hat Enterprise Linux') else (ansible_distribution | lower) }}"
