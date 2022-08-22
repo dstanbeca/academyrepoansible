@@ -1,5 +1,5 @@
 ---
-- name: Create user on a linux server
+- name: Create user
   hosts: all
   become: yes
   vars:
