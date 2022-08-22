@@ -2,7 +2,7 @@
       - name: User Creation Playbook - Create a login user
         user:
           name: "{{ user }}"
-          groups: "wheel, docker, root"
+          groups: "wheel, docker"
           append: yes
           createhome: yes        # Defaults to yes
           home: /home/ansible    # Defaults to /home/<username>
@@ -22,5 +22,5 @@
           path: /etc/sudoers
           state: present
           regexp: '^{{ user }}'
-          line: '{{ user }} ALL=(ALL) NOPASSWD: ALL'
+          line: '{{ user }} ALL=(ALL) NOPASSWD:ALL'
           validate: 'visudo -cf %s'
