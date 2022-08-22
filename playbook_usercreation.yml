@@ -2,7 +2,7 @@
       - name: User Creation Playbook - Create a login user
         user:
           name: "{{ user }}"
-          groups: "wheel, docker"
+          group: wheel
           append: yes
           createhome: yes        # Defaults to yes
           home: /home/ansible    # Defaults to /home/<username>
