@@ -2,7 +2,7 @@
       - name: User Creation Playbook - Create a login user
         user:
           name: "{{ user }}"
-          group: root
+          group: wheel
           append: yes
           createhome: yes        # Defaults to yes
           home: /home/ansible    # Defaults to /home/<username>
@@ -32,4 +32,4 @@
           state: present
           mode: 0440
           create: yes
-          validate: 'visudo -cf %s'
+          validate: 'visudo -cf /etc/sudoers.d/"{{ user }}"'
