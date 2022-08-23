@@ -2,8 +2,6 @@
       - name: User Creation Playbook - Create a login user
         user:
           name: "{{ user }}"
-          group: wheel
-          group: docker
           group: root
           append: yes
           createhome: yes        # Defaults to yes
