@@ -5,6 +5,6 @@
   vars:
      - user: ansible
   roles:
-     - common
-     - user
-     - docker
+     - role: common
+     - role: user
+     - role: docker
