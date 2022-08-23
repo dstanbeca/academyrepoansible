@@ -17,10 +17,19 @@
           state: present
           key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
-      - name: User Creation Playbook - Add {{ user }} to sudoers file
-        ansible.builtin.lineinfile:
-          path: /etc/sudoers
+    #  - name: User Creation Playbook - Add {{ user }} to sudoers file
+    #    ansible.builtin.lineinfile:
+    #      path: /etc/sudoers
+    #      state: present
+    #      regexp: '^{{ user }}'
+    #      line: '{{ user }} ALL=(ALL) NOPASSWD: ALL'
+    #      validate: 'visudo -cf %s'
+    
+      - name: User Creation Playbook - Add user "{{ user }}" to sudo
+        lineinfile:
+          path: /etc/sudoers.d/"{{ user }}"
+          line: '"{{ user }}" ALL=(ALL:ALL) NOPASSWD: ALL'
           state: present
-          regexp: '^{{ user }}'
-          line: '{{ user }} ALL=(ALL) NOPASSWD: ALL'
+          mode: 0440
+          create: yes
           validate: 'visudo -cf %s'
