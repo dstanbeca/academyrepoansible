@@ -1,33 +1,33 @@
 ---
-    - name: Docker Install Playbook - Set Distribution Variable
-      ansible.builtin.set_fact:
-        mydistribution: "{{ 'rhel' if (ansible_distribution == 'Red Hat Enterprise Linux') else (ansible_distribution | lower) }}"
+- name: Set Distribution Variable
+  ansible.builtin.set_fact:
+    mydistribution: "{{ 'rhel' if (ansible_distribution == 'Red Hat Enterprise Linux') else (ansible_distribution | lower) }}"
 
-    - name: Docker Install Playbook - Add signing key
-      ansible.builtin.rpm_key:
-        key: "https://download.docker.com/linux/{{ mydistribution }}/gpg"
-        state: present
+- name: Add signing key
+  ansible.builtin.rpm_key:
+    key: "https://download.docker.com/linux/{{ mydistribution }}/gpg"
+    state: present
 
-    - name: Docker Install Playbook - Add repository into repo.d list
-      ansible.builtin.yum_repository:
-        name: docker
-        description: docker repository
-        baseurl: "https://download.docker.com/linux/{{ mydistribution }}/$releasever/$basearch/stable"
-        enabled: true
-        gpgcheck: true
-        gpgkey: "https://download.docker.com/linux/{{ mydistribution }}/gpg"
+- name: Add repository into repo.d list
+  ansible.builtin.yum_repository:
+    name: docker
+    description: docker repository
+    baseurl: "https://download.docker.com/linux/{{ mydistribution }}/$releasever/$basearch/stable"
+    enabled: true
+    gpgcheck: true
+    gpgkey: "https://download.docker.com/linux/{{ mydistribution }}/gpg"
 
-    - name: Docker Install Playbook - Install Docker
-      ansible.builtin.yum:
-        name:
-          - docker-ce
-          - docker-ce-cli
-          - containerd.io
-        state: latest
-        update_cache: true
+- name: Install Docker
+  ansible.builtin.yum:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: latest
+    update_cache: true
 
-    - name: Docker Install Playbook - Start Docker
-      ansible.builtin.service:
-        name: "docker"
-        enabled: true
-        state: started
+- name: Start Docker
+  ansible.builtin.service:
+    name: "docker"
+    enabled: true
+    state: started
