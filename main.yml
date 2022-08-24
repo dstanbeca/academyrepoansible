@@ -8,3 +8,4 @@
      - role: common
      - role: user
      - role: docker
+     - role: git
