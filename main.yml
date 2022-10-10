@@ -9,3 +9,4 @@
      - role: user
      - role: docker
      - role: git
+     - role: deployapp
