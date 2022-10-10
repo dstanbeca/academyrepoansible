@@ -6,14 +6,11 @@
         clone: yes
         update: yes
     - name: Tear down existing services
-      community.docker.docker_compose:
+      docker_compose:
         project_src: /home/ansible/repos/
         state: absent
 
     - name: Create and start services
-      community.docker.docker_compose:
+      docker_compose::
         project_src: /home/ansible/repos/
       register: output
-
-    - ansible.builtin.debug:
-        var: output
