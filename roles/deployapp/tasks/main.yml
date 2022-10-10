@@ -5,12 +5,8 @@
         dest: /home/ansible/repos/
         clone: yes
         update: yes
-    - name: Tear down existing services
-      docker_compose:
+    - name: deploy Docker Compose stack
+      community.docker.docker_compose:
         project_src: /home/ansible/repos/
-        state: absent
-
-    - name: Create and start services
-      docker_compose::
-        project_src: /home/ansible/repos/
-      register: output
+        files:
+        - docker-compose.yml
