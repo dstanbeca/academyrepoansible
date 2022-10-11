@@ -6,7 +6,8 @@
         clone: yes
         update: yes
     - name: deploy Docker Compose stack
-      community.docker.docker_compose:
+      docker_compose:
         project_src: /home/ansible/repos/
+        state: present
         files:
         - docker-compose.yml
