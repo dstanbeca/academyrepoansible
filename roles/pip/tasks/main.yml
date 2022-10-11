@@ -30,5 +30,7 @@
 #      - docker
 #      - docker-py
 #      - requests
+- name: Install pip Requirements
+  command: python -m pip install docker-compose --user
 
     
