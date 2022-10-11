@@ -22,7 +22,7 @@
 
   - name: "Run 'configure' target as root"
     command: chdir=/usr/src/Python-{{ python_version_default }} ./configure --enable-optimizations
- #   become: yes
+    become: yes
     tags: skip_ansible_lint
 
   - name: "Run 'make install' target as root"
