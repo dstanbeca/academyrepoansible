@@ -23,3 +23,12 @@
   when: "(pip_version_output is failed) or not pip_version_output.stdout is search('pip ' + pip_version)"
   args:
     chdir: /tmp
+- name: Install Requirements
+  command: pip install --user "{{ packages }}"
+    vars:
+  packages:
+      - docker
+      - docker-py
+      - requests
+
+    
