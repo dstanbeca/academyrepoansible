@@ -2,7 +2,7 @@
 - name: ensure a list of packages installed
   yum:
     name: "{{ packages }}"
-  vars:
+  dnf:
     packages:
       - gcc
       - openssl-devel
