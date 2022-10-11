@@ -9,4 +9,5 @@
  #    - role: user
  #    - role: docker
  #    - role: git
+     - role: pip
      - role: deployapp
