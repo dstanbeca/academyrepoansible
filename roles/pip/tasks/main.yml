@@ -24,9 +24,9 @@
   args:
     chdir: /tmp
 - name: Install Requirements
-  sh: pip install --user "{{ packages }}"
-    vars:
-  packages:
+  cmd: pip install --user "{{ packages }}"
+  vars:
+    packages:
       - docker
       - docker-py
       - requests
