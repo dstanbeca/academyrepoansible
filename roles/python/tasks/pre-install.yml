@@ -1,6 +1,10 @@
 ---
 - name: ensure a list of packages installed
   command: yum groupinstall "Development Tools"
+  command: yum install bzip2-devel
+  command: yum install openssl-devel
+  command: yum install gcc
+  command: yum install libffi-devel
 #    name: "{{ packages }}"
 #  vars:
 #    packages:
