@@ -1,6 +1,6 @@
 ---
 - name: ensure a list of packages installed
-  dnf:
+  yum:
     name: "{{ packages }}"
   vars:
     packages:
