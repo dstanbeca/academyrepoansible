@@ -43,3 +43,4 @@
   
   - name: "Make python3.7 default"
     command: ln -fs /usr/local/bin/python3.7 /usr/bin/python
+    become: yes
