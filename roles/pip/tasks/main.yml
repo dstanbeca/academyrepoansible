@@ -18,6 +18,10 @@
 # Install pip if it's not already installed, or if
 # the desired versions of pip aren't installed
 # The regular expression extracts '9.0' out of '9.0.*'
+- name: Add epel repo
+  command: yum --enablerepo=extras install epel-release
+  become: yes
+  
 - name: Install pip
   yum:
     name: "{{ packages }}"
