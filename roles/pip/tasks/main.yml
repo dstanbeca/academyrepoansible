@@ -51,7 +51,7 @@
   vars:
     ansible_python_interpreter: /usr/local/bin/python3.7
 #  command: python -m pip install docker-compose --user
-  command: pip install docker-compose requests --user
+  command: python -m pip install docker-compose requests --user
 
 
 
