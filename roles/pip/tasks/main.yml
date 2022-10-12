@@ -21,7 +21,7 @@
 - name: Install pip
 #  vars:
 #   ansible_python_interpreter: /usr/bin/python3.7
-  command: yum install python-pip python3-pip
+  command: yum install -y python-pip python3-pip
   become: yes
  # command: "{{ ansible_python_interpreter if ansible_python_interpreter is defined else 'python' }} get-pip.py pip=={{ pip_version }}"
  # when: "(pip_version_output is failed) or not pip_version_output.stdout is search('pip ' + pip_version)"
