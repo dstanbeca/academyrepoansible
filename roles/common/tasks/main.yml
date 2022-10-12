@@ -12,7 +12,6 @@
     name: firewalld
     state: stopped
     enabled: False
-    become: yes
 
 - name: Set/Change system hostname
   hostname:
