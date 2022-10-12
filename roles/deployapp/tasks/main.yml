@@ -5,6 +5,7 @@
         repo: https://github.com/dstanbeca/academyapp.git
         dest: /home/ansible/repos/
         clone: yes
+        repo: stable
         update: yes
         
     - name: Change directory
