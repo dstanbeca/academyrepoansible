@@ -26,11 +26,12 @@
 #      validate: 'visudo -cf %s'
 
 - name: Add user "{{ user }}" to sudo
+  become: yes
   lineinfile:
     path: /etc/sudoers.d/"{{ user }}"
     line: '"{{ user }}" ALL=(ALL:ALL) NOPASSWD: ALL'
     state: present
-    become: yes
+
     mode: 0440
     create: yes
     validate: 'visudo -cf /etc/sudoers.d/"{{ user }}"'
