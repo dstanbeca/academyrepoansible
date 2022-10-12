@@ -6,10 +6,14 @@
   become: yes
   
 - name: Disable SELinux
+  vars:
+   ansible_python_interpreter: /usr/bin/python2.7
   selinux: state=disabled
   become: yes
 
 - name: Stop and disable firewalld.
+  vars:
+    ansible_python_interpreter: /usr/bin/python2.7
   service:
     name: firewalld
     state: stopped
