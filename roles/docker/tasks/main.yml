@@ -18,6 +18,8 @@
     gpgkey: "https://download.docker.com/linux/{{ mydistribution }}/gpg"
 
 - name: Install Docker
+  vars:
+    ansible_python_interpreter: /usr/bin/python2.7
   ansible.builtin.yum:
     name:
       - docker-ce
