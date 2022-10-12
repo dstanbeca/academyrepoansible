@@ -21,6 +21,7 @@
 - name: Add epel repo
   command: yum --enablerepo=extras install -y epel-release
   become: yes
+  warn: false
   
 - name: Install pip
   yum:
