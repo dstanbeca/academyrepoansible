@@ -10,7 +10,8 @@
 - lineinfile:
     path: /usr/bin/yum
     regexp: '^#!/usr/bin/'
-    line: '#!/usr/bin/python2.7'   
+    line: '#!/usr/bin/python2.7'  
+    become: yes
     
 - name: Update all packages
   vars:
