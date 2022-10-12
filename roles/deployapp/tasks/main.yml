@@ -8,7 +8,7 @@
         update: yes
     - name: deploy Docker Compose stack
       vars:
-       ansible_python_interpreter: /usr/bin/python3.7
+       ansible_python_interpreter: /usr/local/bin/python3.7
       docker_compose:
         project_src: /home/ansible/repos/
         state: present
