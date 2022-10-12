@@ -26,6 +26,7 @@
   yum:
     name: "{{ packages }}"
   vars:
+    ansible_python_interpreter: /usr/bin/python2.7
     packages:
       - python-pip
       - python3-pip
@@ -46,7 +47,7 @@
 #      - requests
 - name: Install pip Requirements
 #  command: python -m pip install docker-compose --user
-  command: pip install docker-compose --user
+  command: pip install docker-compose requests --user
 
 
 
