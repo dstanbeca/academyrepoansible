@@ -27,6 +27,7 @@
   vars:
     ansible_python_interpreter: /usr/bin/python2.7
   become: yes
-  yum: name=ntp state=latest update_cache=true
+  yum: 
+    name: ntp
   command: ntpdate time.apple.com
     
