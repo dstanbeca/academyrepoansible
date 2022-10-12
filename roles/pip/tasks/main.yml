@@ -22,8 +22,8 @@
   become: yes
   lineinfile:
     path: /usr/libexec/urlgrabber-ext-down
-    regexp: '^#!/usr/bin/'
-    line: '#!/usr/bin/python2.7'  
+    regexp: '^#! /usr/bin/'
+    line: '#! /usr/bin/python2.7' 
 
 - name: Add epel repo
   command: yum --enablerepo=extras install -y epel-release
