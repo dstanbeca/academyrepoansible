@@ -1,11 +1,16 @@
 ---
-- name: Change python interpreter
-  ansible.builtin.replace:
+#- name: Change python interpreter
+#  ansible.builtin.replace:
+#    path: /usr/bin/yum
+#    before: '(python+)'
+#    after: '(python3.7+)'
+#    regexp: '^(.+)$'
+#    replace: '\python3.7'
+    
+- lineinfile:
     path: /usr/bin/yum
-    before: '(python+)'
-    after: '(python3.7+)'
-    regexp: '^(.+)$'
-    replace: '\python3.7'
+    regexp: '^#!/usr/bin/'
+    line: '#!/usr/bin/python2.7'   
     
 - name: Update all packages
   vars:
