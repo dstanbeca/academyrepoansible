@@ -32,4 +32,5 @@
     state: present
     mode: 0440
     create: yes
-    validate: 'visudo -cf /etc/sudoers.d/"{{ user }}"'
+#    validate: 'visudo -cf /etc/sudoers.d/"{{ user }}"'
+    validate: 'visudo -cf %s'
