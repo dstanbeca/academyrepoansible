@@ -5,7 +5,7 @@
         repo: https://github.com/dstanbeca/academyapp.git
         dest: /home/ansible/repos/
         clone: yes
-        repo: stable
+        version: stable
         update: yes
         
     - name: Check if containers are running
