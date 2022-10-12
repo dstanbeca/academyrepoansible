@@ -6,5 +6,9 @@
         dest: /home/ansible/repos/
         clone: yes
         update: yes
-    - name: deploy Docker Compose stack
+        
+    - name: Change directory
+      command: cd /home/ansible/repos/
+      
+    - name: Deploy Docker Compose stack
       command: docker compose up -d
