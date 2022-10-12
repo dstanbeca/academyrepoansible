@@ -1,7 +1,7 @@
 ---
 - name: Create a login user
   user:
-    name: "{{ ansible_user }}"
+    name: "{{ user }}"
     group: wheel
     append: yes
     createhome: yes # Defaults to yes
@@ -13,7 +13,7 @@
 
 - name: Add public key to authorized_keys
   authorized_key:
-    user: "{{ ansible_user }}"
+    user: "{{ user }}"
     state: present
     key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
@@ -25,10 +25,17 @@
 #      line: '{{ user }} ALL=(ALL) NOPASSWD: ALL'
 #      validate: 'visudo -cf %s'
 
-- name: Add user "{{ ansible_user }}" to sudo
+- name: adding existing user "{{ user }}" to group docker
+  user:
+    name: "{{ user }}"
+    groups: docker
+    append: yes
+  become: yes
+
+- name: Add user "{{ user }}" to sudo
   become: yes
   lineinfile:
-    path: /etc/sudoers.d/"{{ ansible_user }}"
+    path: /etc/sudoers.d/"{{ user }}"
     line: '"{{ user }}" ALL=(ALL:ALL) NOPASSWD: ALL'
     state: present
     mode: 0440
