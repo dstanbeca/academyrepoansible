@@ -7,6 +7,7 @@
         clone: yes
         update: yes
     - name: deploy Docker Compose stack
+      become: yes
       vars:
        ansible_python_interpreter: /usr/local/bin/python3.7
       docker_compose:
