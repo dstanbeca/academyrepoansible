@@ -8,7 +8,7 @@
  #    - role: common
  #    - role: user
  #    - role: docker
- #    - role: git
+     - role: git
  #    - role: python
  #    - role: pip
      - role: deployapp
