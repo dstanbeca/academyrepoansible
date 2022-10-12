@@ -8,8 +8,8 @@
         repo: stable
         update: yes
         
-    - name: Change directory
-      command: cd /home/ansible/repos/
+    - name: Check if containers are running
+      command: chdir=/home/ansible/repos/ docker compose down
       
     - name: Deploy Docker Compose stack
       command: chdir=/home/ansible/repos/ docker compose up -d
