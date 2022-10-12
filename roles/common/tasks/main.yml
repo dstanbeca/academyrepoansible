@@ -33,4 +33,5 @@
   
 - name: Update date and time
   command: ntpdate time.apple.com
+  become: yes
     
