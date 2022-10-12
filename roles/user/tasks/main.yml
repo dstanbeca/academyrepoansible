@@ -27,10 +27,12 @@
 
 - name: adding existing user "{{ user }}" to group docker
   user:
-    name: "{{ user }}"
     groups: docker
     append: yes
   become: yes
+  
+- name: Log off and on user
+  command: sudo -s -u "{{ user }}"
 
 - name: Add user "{{ user }}" to sudo
   become: yes
