@@ -54,6 +54,9 @@
 #      - docker
 #      - docker-py
 #      - requests
+- name: Update pip
+  command: python -m pip install --upgrade pip
+  
 - name: Install pip Requirements
 #  vars:
 #    ansible_python_interpreter: /usr/local/bin/python3.7
