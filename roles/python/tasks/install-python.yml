@@ -39,8 +39,8 @@
       path: /usr/src/Python-{{ python_version_default }}.tgz
       state: absent
     become: yes
-  when: 'python_version_current.stdout != python_version_default'
+    when: 'python_version_current.stdout != python_version_default'
   
   - name: "Make python version default"
-    command: "ln -s -f /usr/local/bin/python3.7 /usr/bin/python"
+    command: ln -s -f /usr/local/bin/python3.7 /usr/bin/python
     become: yes
