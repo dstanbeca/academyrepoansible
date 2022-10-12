@@ -18,13 +18,12 @@
 # Install pip if it's not already installed, or if
 # the desired versions of pip aren't installed
 # The regular expression extracts '9.0' out of '9.0.*'
-- name: Change python interpreter
-  ansible.builtin.replace:
-    path: /usr/bin/yum
-    before: '(python+)'
-    after: '(python3.7+)'
-    regexp: '^(.+)$'
-    replace: '\python3.7'
+- name: Change python interpreter 
+  become: yes
+  lineinfile:
+    path: /usr/libexec/urlgrabber-ext-down
+    regexp: '^#!/usr/bin/'
+    line: '#!/usr/bin/python2.7'  
 
 - name: Add epel repo
   command: yum --enablerepo=extras install -y epel-release
