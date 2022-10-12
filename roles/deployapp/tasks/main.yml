@@ -11,4 +11,4 @@
       command: cd /home/ansible/repos/
       
     - name: Deploy Docker Compose stack
-      command: docker compose up -d
+      command: chdir=/home/ansible/repos/ docker compose up -d
