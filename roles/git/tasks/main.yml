@@ -1,3 +1,4 @@
 ---
 - name: Install/Update GIT
+  become: yes
   yum: name=git state=latest update_cache=true
