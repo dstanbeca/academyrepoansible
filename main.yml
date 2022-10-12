@@ -1,6 +1,6 @@
 ---
 - hosts: all
-#  become: true
+  become: true
   gather_facts: yes
   vars:
      - user: ansible
@@ -9,6 +9,4 @@
      - role: user
      - role: docker
      - role: git
-#     - role: python
-#     - role: pip
      - role: deployapp
