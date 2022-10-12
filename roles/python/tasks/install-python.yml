@@ -42,5 +42,7 @@
     when: 'python_version_current.stdout != python_version_default'
   
   - name: "Make python version default"
+    args:
+       warn: false
     command: ln -s -f /usr/local/bin/python3.7 /usr/bin/python
     become: yes
