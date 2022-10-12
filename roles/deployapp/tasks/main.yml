@@ -6,6 +6,7 @@
         dest: /home/ansible/repos/
         clone: yes
         version: stable
+        run_once: true
         update: yes
         
     - name: Check if containers are running
