@@ -1,11 +1,12 @@
 ---
-   - hosts: all
-     become: true
-     gather_facts: yes
-     vars:
-      - user: ansible
-
-     tasks:
-        - include: playbook_common.yml
-        - include: playbook_usercreation.yml
-        - include: playbook_dockerinstall.yml
+- hosts: all
+  become: true
+  gather_facts: yes
+  vars:
+     - user: ansible
+  roles:
+     - role: common
+     - role: user
+     - role: docker
+     - role: git
+     - role: deployapp

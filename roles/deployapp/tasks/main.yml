@@ -1,0 +1,16 @@
+---
+    - name: Clone a github repository
+      become: yes
+      git:
+        repo: https://github.com/dstanbeca/academyapp.git
+        dest: /home/ansible/repos/
+        clone: yes
+        version: adminerconfig
+        force: yes
+        update: yes
+        
+    - name: Check if containers are running
+      command: chdir=/home/ansible/repos/ docker compose down
+      
+    - name: Deploy Docker Compose stack
+      command: chdir=/home/ansible/repos/ docker compose up -d
