@@ -7,7 +7,6 @@
         clone: yes
         version: stable
         force: yes
-        run_once: true
         update: yes
         
     - name: Check if containers are running
