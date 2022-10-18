@@ -9,7 +9,7 @@
         force: yes
         update: yes
         
-    - name: Check if containers are running
+    - name: Stop containers that are running
       command: chdir=/home/ansible/repos/ docker compose down
       
     - name: Deploy Docker Compose stack
