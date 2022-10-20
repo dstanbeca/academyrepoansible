@@ -25,7 +25,7 @@
 #      line: '{{ user }} ALL=(ALL) NOPASSWD: ALL'
 #      validate: 'visudo -cf %s'
 
- - name: adding existing user "{{ user }}" to group docker
+ - name: Adding existing user "{{ user }}" to group docker
    user:
      name: "{{ user }}"
      groups: docker
@@ -35,7 +35,7 @@
 #- name: Log off and on user
 #  command: sudo -s -u "{{ user }}"
 
- - name: reset ssh connection to allow user changes to affect 'current login user'
+ - name: Reset ssh connection to allow user changes to affect 'current login user'
    meta: reset_connection
 
  - name: Add user "{{ user }}" to sudo
