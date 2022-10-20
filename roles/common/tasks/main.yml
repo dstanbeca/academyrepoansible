@@ -24,6 +24,6 @@
       state: present
   
   - name: Update date and time
-    command: timedatectl set-timezone Europe/Athens && ntpdate time.apple.com
+    command: timedatectl set-timezone "Europe/Athens" && ntpdate "pool.ntp.org"
     become: yes
     
