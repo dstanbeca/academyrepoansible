@@ -9,7 +9,7 @@
 #        force: yes
 #        update: yes
 
-    - name: Clone a private repository into {{PROJECT_NAME}} folder.
+    - name: Clone a private repository.
       git:
         repo: https://github.com/dstanbeca/academyapp.git
         version: main
