@@ -22,8 +22,12 @@
     yum: 
       name: ntp
       state: present
+      
+  - name: Set Timezone
+    command: timedatectl set-timezone Europe/Athens
+    become: yes
   
   - name: Update date and time
-    command: timedatectl set-timezone "Europe/Athens" && ntpdate "pool.ntp.org"
+    command: ntpdate pool.ntp.org
     become: yes
     
