@@ -1,13 +1,22 @@
 ---
-    - name: Clone a github repository
-      become: yes
+#    - name: Clone a github repository
+#      become: yes
+#      git:
+#        repo: https://github.com/dstanbeca/academyapp.git
+#        dest: /home/ansible/repos/
+#        clone: yes
+#       version: main
+#        force: yes
+#        update: yes
+
+    - name: Clone a private repository into {{PROJECT_NAME}} folder.
       git:
         repo: https://github.com/dstanbeca/academyapp.git
-        dest: /home/ansible/repos/
-        clone: yes
         version: main
-        force: yes
+        dest: /home/ansible/repos/
+        accept_hostkey: yes
         update: yes
+      become: no
         
     - name: Check if containers are running
       command: chdir=/home/ansible/repos/ docker compose down
