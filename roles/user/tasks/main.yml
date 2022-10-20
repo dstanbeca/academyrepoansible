@@ -11,11 +11,11 @@
       ssh_key_type: rsa
       ssh_key_file: "~/.ssh/id_rsa.pub"
 
- - name: Add public key to authorized_keys
-   authorized_key:
-     user: "{{ user }}"
-     state: present
-     key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  - name: Add public key to authorized_keys
+    authorized_key:
+      user: "{{ user }}"
+      state: present
+      key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
 #  - name: User Creation Playbook - Add {{ user }} to sudoers file
 #    ansible.builtin.lineinfile:
@@ -25,27 +25,27 @@
 #      line: '{{ user }} ALL=(ALL) NOPASSWD: ALL'
 #      validate: 'visudo -cf %s'
 
- - name: Adding existing user "{{ user }}" to group docker
-   user:
-     name: "{{ user }}"
-     groups: docker
-     append: yes
-   become: yes
+  - name: Adding existing user "{{ user }}" to group docker
+    user:
+      name: "{{ user }}"
+      groups: docker
+      append: yes
+    become: yes
   
 #- name: Log off and on user
 #  command: sudo -s -u "{{ user }}"
 
- - name: Reset ssh connection to allow user changes to affect 'current login user'
-   meta: reset_connection
+  - name: Reset ssh connection to allow user changes to affect 'current login user'
+    meta: reset_connection
 
- - name: Add user "{{ user }}" to sudo
-   become: yes
-   lineinfile:
-     path: /etc/sudoers.d/"{{ user }}"
-     line: '"{{ user }}" ALL=(ALL:ALL) NOPASSWD: ALL'
-     state: present
-     mode: 0440
-     create: yes
+  - name: Add user "{{ user }}" to sudo
+    become: yes
+    lineinfile:
+      path: /etc/sudoers.d/"{{ user }}"
+      line: '"{{ user }}" ALL=(ALL:ALL) NOPASSWD: ALL'
+      state: present
+      mode: 0440
+      create: yes
  #   validate: 'visudo -cf /etc/sudoers.d/"{{ user }}"'
-     validate: 'visudo -cf %s'
+      validate: 'visudo -cf %s'
 
