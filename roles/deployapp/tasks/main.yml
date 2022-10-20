@@ -15,7 +15,6 @@
         version: main
         dest: /home/ansible/repos/
         accept_hostkey: yes
-        update: yes
       become: yes
         
     - name: Check if containers are running
