@@ -15,7 +15,7 @@
         version: main
         dest: /home/ansible/repos/
         accept_hostkey: yes
-      become: yes
+ #     become: yes
       become_user: "{{ user }}"
         
     - name: Check if containers are running
