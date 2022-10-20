@@ -16,7 +16,7 @@
         dest: /home/ansible/repos/
         accept_hostkey: yes
         update: yes
-      become: no
+      become: yes
         
     - name: Check if containers are running
       command: chdir=/home/ansible/repos/ docker compose down
