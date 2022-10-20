@@ -1,52 +1,29 @@
----
-#- name: Change python interpreter
-#  ansible.builtin.replace:
-#    path: /usr/bin/yum
-#    before: '(python+)'
-#    after: '(python3.7+)'
-#    regexp: '^(.+)$'
-#    replace: '\python3.7'
-#- name: Change python interpreter 
-#  become: yes
-#  lineinfile:
-#    path: /usr/bin/yum
-#    regexp: '^#!/usr/bin/'
-#    line: '#!/usr/bin/python2.7'  
-    
-    
-- name: Update all packages
-#  vars:
-#   ansible_python_interpreter: /usr/bin/python2.7
-  yum: name=* state=latest update_cache=true
-  become: yes
+--- 
+  - name: Update all packages
+    yum: name=* state=latest update_cache=true
+    become: yes
   
-- name: Disable SELinux
-#  vars:
-#   ansible_python_interpreter: /usr/bin/python2.7
-  selinux: state=disabled
-  become: yes
+  - name: Disable SELinux
+    selinux: state=disabled
+    become: yes
 
-- name: Stop and disable firewalld.
-#  vars:
-#    ansible_python_interpreter: /usr/bin/python2.7
-  service:
-    name: firewalld
-    state: stopped
-    enabled: False
+  - name: Stop and disable firewalld.
+    service:
+      name: firewalld
+      state: stopped
+      enabled: False
 
-- name: Set/Change system hostname
-  hostname:
-    name: "{{ inventory_hostname }}"
+  - name: Set/Change system hostname
+    hostname:
+      name: "{{ inventory_hostname }}"
   
-- name: Install NTP
-#  vars:
-#    ansible_python_interpreter: /usr/bin/python2.7
-  become: yes
-  yum: 
-    name: ntp
-    state: present
+  - name: Install NTP
+    become: yes
+    yum: 
+      name: ntp
+      state: present
   
-- name: Update date and time
-  command: ntpdate time.apple.com
-  become: yes
+  - name: Update date and time
+    command: timedatectl set-timezone Europe/Athens && ntpdate time.apple.com
+    become: yes
     
