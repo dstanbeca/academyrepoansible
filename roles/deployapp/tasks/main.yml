@@ -16,9 +16,9 @@
         dest: /home/ansible/repos/
         accept_hostkey: yes
         clone: yes
-        update: yes
-      become: yes
-#      become_user: "{{ user }}"
+#        update: yes
+#      become: yes
+      become_user: "{{ user }}"
         
     - name: Check if containers are running
       command: chdir=/home/ansible/repos/ docker compose down
