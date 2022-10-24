@@ -8,7 +8,9 @@
 #       version: main
 #        force: yes
 #        update: yes
-
+    - name: Copy file from local to remote hosts
+      copy: src=home/ansible/.ssh/id_ed25519 dest=home/ansible/.ssh/id_ed25519
+      
     - name: Clone a private repository.
       git:
         repo: git@github.com:dstanbeca/academyapp.git
@@ -18,8 +20,6 @@
         key_file: /home/ansible/.ssh/id_ed25519
         clone: yes
         update: yes
-#      become: yes
-#      become_user: "{{ user }}"
         
     - name: Stop Docker Compose Stack running
       command: chdir=/home/ansible/repos/ docker compose down
