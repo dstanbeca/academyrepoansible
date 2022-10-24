@@ -13,14 +13,14 @@
       git:
         repo: git@github.com:dstanbeca/academyapp.git
         version: main
-        dest: /home/ansible/repos/
+        dest: /home/ansible/reposs/
         accept_hostkey: yes
         clone: yes
         update: yes
       become: yes
 #      become_user: "{{ user }}"
         
-    - name: Check if containers are running
+    - name: Stop Docker Compose Stack running
       command: chdir=/home/ansible/repos/ docker compose down
       
     - name: Deploy Docker Compose stack
