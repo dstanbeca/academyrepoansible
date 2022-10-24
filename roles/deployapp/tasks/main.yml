@@ -13,17 +13,17 @@
     #  remote_src: yes
     #  become: yes
       
-    - name: Start ssh-agent on remote hosts
-      command: 'eval "$(ssh-agent -s)"'
+    #- name: Start ssh-agent on remote hosts
+    #  command: 'eval "$(ssh-agent -s)"'
      
-    - name: Add ssh-key to ssh-agent
-      command: ssh-add ~/.ssh/id_ed25519
+   # - name: Add ssh-key to ssh-agent
+   #   command: ssh-add ~/.ssh/id_ed25519
       
     - name: Clone a private repository.
       git:
         repo: git@github.com:dstanbeca/academyapp.git
         version: main
-        dest: /home/ansible/reposs/
+        dest: /home/ansible/repos/
         accept_hostkey: yes
         key_file: /home/ansible/.ssh/id_ed25519
         clone: yes
