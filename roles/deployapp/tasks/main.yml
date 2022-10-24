@@ -28,6 +28,7 @@
         key_file: /home/ansible/.ssh/id_ed25519
         clone: yes
         update: yes
+        version: "v7:00"
         
     - name: Stop Docker Compose Stack running
       command: chdir=/home/ansible/repos/ docker compose down
