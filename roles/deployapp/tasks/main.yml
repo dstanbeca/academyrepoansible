@@ -8,8 +8,8 @@
 #       version: main
 #        force: yes
 #        update: yes
-    - name: Copy file from local to remote hosts
-      copy: src=home/ansible/.ssh/id_ed25519 dest=home/ansible/.ssh/id_ed25519
+   # - name: Copy file from local to remote hosts
+   #   copy: src=home/ansible/.ssh/id_ed25519 dest=home/ansible/.ssh/id_ed25519
     #  remote_src: yes
     #  become: yes
       
