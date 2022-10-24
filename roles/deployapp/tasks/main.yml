@@ -15,6 +15,7 @@
         version: main
         dest: /home/ansible/reposs/
         accept_hostkey: yes
+        key_file: /home/ansible/.ssh/id_ed25519
         clone: yes
         update: yes
       become: yes
