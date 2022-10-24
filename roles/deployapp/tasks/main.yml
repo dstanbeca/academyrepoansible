@@ -1,24 +1,4 @@
 ---
-#    - name: Clone a github repository
-#      become: yes
-#      git:
-#        repo: https://github.com/dstanbeca/academyapp.git
-#        dest: /home/ansible/repos/
-#        clone: yes
-#       version: main
-#        force: yes
-#        update: yes
-   # - name: Copy file from local to remote hosts
-   #   copy: src=home/ansible/.ssh/id_ed25519 dest=home/ansible/.ssh/id_ed25519
-    #  remote_src: yes
-    #  become: yes
-      
-    #- name: Start ssh-agent on remote hosts
-    #  command: 'eval "$(ssh-agent -s)"'
-     
-   # - name: Add ssh-key to ssh-agent
-   #   command: ssh-add ~/.ssh/id_ed25519
-      
     - name: Clone a private repository.
       git:
         repo: git@github.com:dstanbeca/academyapp.git
