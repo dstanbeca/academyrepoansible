@@ -8,9 +8,7 @@
 #       version: main
 #        force: yes
 #        update: yes
-    - name: Start ssh-agent
-      command: eval "$(ssh-agent -s)"
-      
+
     - name: Clone a private repository.
       git:
         repo: git@github.com:dstanbeca/academyapp.git
