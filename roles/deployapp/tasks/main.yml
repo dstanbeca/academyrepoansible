@@ -2,7 +2,7 @@
     - name: Clone a private repository.
       git:
         repo: git@github.com:dstanbeca/academyapp.git
-        version: main
+        version: 'v8.00'
         dest: /home/ansible/repos/
         accept_hostkey: yes
         force: yes
